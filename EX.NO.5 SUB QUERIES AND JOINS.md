@@ -66,49 +66,55 @@ INSERT INTO DEPT (DEPTNO, DNAME, LOC) VALUES (30, 'SALES', 'CHICAGO');
 INSERT INTO DEPT (DEPTNO, DNAME, LOC) VALUES (40, 'OPERATIONS', 'BOSTON');
 ```
 
-### Q1) List the name of the employees whose salary is greater than that of employee with empno 7566.
+### *Q1) List the name of the employees whose salary is greater than that of employee with empno 7566.
 
 
 ### QUERY:
-
+SELECT ename FROM EMP WHERE sal > (SELECT sal FROM EMP WHERE empno = 7566);
 
 ### OUTPUT:
+![image](https://github.com/PGHARIHARAN33/DBMS/assets/123052484/91d6f67b-42e6-4feb-a20d-ad9c29790fef)
 
-### Q2) List the ename,job,sal of the employee who get minimum salary in the company.
+### *Q2) List the ename,job,sal of the employee who get minimum salary in the company.
 
 ### QUERY:
-
+SELECT ename,job,sal FROM EMP WHERE sal = (SELECT MIN(sal) FROM EMP);
 
 ### OUTPUT:
+![image](https://github.com/PGHARIHARAN33/DBMS/assets/123052484/ae27cd48-6f05-49a3-96a6-e8ee60b42ae8)
 
-### Q3) List ename, job of the employees who work in deptno 10 and his/her job is any one of the job in the department ‘SALES’.
+### *Q3) List ename, job of the employees who work in deptno 10 and his/her job is any one of the job in the department ‘SALES’.
 
 ### QUERY:
-
+SELECT ename,job FROM EMP WHERE deptno = 10 AND job IN (SELECT job FROM EMP WHERE job = 'sales');
 
 ### OUTPUT:
+![image](https://github.com/PGHARIHARAN33/DBMS/assets/123052484/f1a6784c-5955-47c4-8239-65bcbd52941b)
 
 
-### Q4) Create a view empv5 (for the table emp) that contains empno, ename, job of the employees who work in dept 10.
+### *Q4) Create a view empv5 (for the table emp) that contains empno, ename, job of the employees who work in dept 10.
 
 ### QUERY:
-
+create view empv5 as select EMPNO,ENAME,JOB from EMP where DEPTNO=10; SELECT * FROM empv5;
 
 ### OUTPUT:
+![image](https://github.com/PGHARIHARAN33/DBMS/assets/123052484/35c3c6a6-0264-4e55-b56e-09786422b682)
 
-### Q5) Create a view with column aliases empv30 that contains empno, ename, sal of the employees who work in dept 30. Also display the contents of the view.
+### *Q5) Create a view with column aliases empv30 that contains empno, ename, sal of the employees who work in dept 30. Also display the contents of the view.
 
 ### QUERY:
-
+create view empv30 AS select EMPNO,ENAME,SAL from EMP where DEPTNO=30; SELECT * FROM empv30;
 
 ### OUTPUT:
+![image](https://github.com/PGHARIHARAN33/DBMS/assets/123052484/3d0efc5c-df71-4fbd-8593-0ab4d2c5fb74)
 
-### Q6) Update the view empv5 by increasing 10% salary of the employees who work as ‘CLERK’. Also confirm the modifications in emp table
+### *Q6) Update the view empv5 by increasing 10% salary of the employees who work as ‘CLERK’. Also confirm the modifications in emp table
 
 ### QUERY:
-
+UPDATE EMP SET sal = sal * 1.1 WHERE job = 'CLERK'; create view empv5 as select EMPNO,ENAME,SALARY,JOB from EMP;
 
 ### OUTPUT:
+![image](https://github.com/PGHARIHARAN33/DBMS/assets/123052484/48b85012-6489-4087-8ffd-f91beab2aeb7)
 
 ## Create a Customer1 Table
 ```sql
@@ -138,34 +144,42 @@ INSERT INTO Salesman1 (salesman_id, name, city, commission) VALUES(5006, 'Mc Lyo
 INSERT INTO Salesman1 (salesman_id, name, city, commission) VALUES(5007, 'Paul Adam', 'Rome', 0.13);
 INSERT INTO Salesman1 (salesman_id, name, city, commission) VALUES(5003, 'Lauson Hen', 'San Jose', 0.12);
 ```
-### Q7) Write a SQL query to find the salesperson and customer who reside in the same city. Return Salesman, cust_name and city.
+### *Q7) Write a SQL query to find the salesperson and customer who reside in the same city. Return Salesman, cust_name and city.
 
 ### QUERY:
-
+select s.name,c.cust_name,s.city from salesman1 s ,customer1 c where s.city=c.city;
 
 ### OUTPUT:
+![image](https://github.com/PGHARIHARAN33/DBMS/assets/123052484/75168a09-e1d3-4877-b77a-9f87ecbf359c)
 
-### Q8) Write a SQL query to find salespeople who received commissions of more than 13 percent from the company. Return Customer Name, customer city, Salesman, commission.
+### *Q8) Write a SQL query to find salespeople who received commissions of more than 13 percent from the company. Return Customer Name, customer city, Salesman, commission.
 
 
 ### QUERY:
-
+select s.name,c.cust_name,c.city,s.commission from salesman1 s inner join customer1 c on s.city=c.city where s.commission>0.13;
 
 ### OUTPUT:
+![image](https://github.com/PGHARIHARAN33/DBMS/assets/123052484/bc833889-2132-4dfc-86e3-920deb598060)
 
-### Q9) Perform Natural join on both tables
+### *Q9) Perform Natural join on both tables
 
 ### QUERY:
-
+select * from salesman1 s natural join customer1 c;
 
 ### OUTPUT:
+![image](https://github.com/PGHARIHARAN33/DBMS/assets/123052484/556c2425-ab49-474b-93be-4e4b13d62632)
 
-### Q10) Perform Left and right join on both tables
+### *Q10) Perform Left and right join on both tables
 
 ### QUERY:
-
+select s.name,c.cust_name,c.city,s.commission from salesman1 s left join customer1 c on s.salesman_id=c.salesman_id; 
+select s.name,c.cust_name,c.city,s.commission from salesman1 s right join customer1 c on s.salesman_id=c.salesman_id;
 
 ### OUTPUT:
+### LEFT JOIN
+![image](https://github.com/PGHARIHARAN33/DBMS/assets/123052484/5be3b787-2e93-4de0-b5db-c453d08985ed)
+### RIGHT JOIN
+![image](https://github.com/PGHARIHARAN33/DBMS/assets/123052484/01f231e8-db19-415e-b750-35fff158150c)
 
 ## RESULT 
 ### Thus the basics of subqueries,views,joins are performed in SQL.
