@@ -11,9 +11,24 @@
 6. End the begin section.
 
 ### Program:
+CREATE TABLE employed(
+  empid NUMBER,
+  empname VARCHAR2(10),
+  dept VARCHAR2(10),
+  salary NUMBER
+);
 
+CREATE TABLE sal_log (
+  log_id NUMBER GENERATED ALWAYS AS IDENTITY,
+  empid NUMBER,
+  empname VARCHAR2(10),
+  old_salary NUMBER,
+  new_salary NUMBER,
+  update_date DATE
+);
 
 ### Output:
+![image](https://github.com/PGHARIHARAN33/DBMS/assets/123052484/111b2469-fd51-4071-9373-7ecdf23325dc)
 
 
 ### Result:
