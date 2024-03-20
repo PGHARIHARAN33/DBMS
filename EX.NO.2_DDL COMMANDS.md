@@ -21,45 +21,59 @@ To create a student database and execute DDL queries using SQL.
 5. RENAME: This is used to rename an object existing in the database.
 
 ## Query:
-### 1) Create a database studentdb
+### *1) Create a database studentdb
 
 ### SQL QUERY:
+create database student_db;
 
 ### OUTPUT:
+![image](https://github.com/PGHARIHARAN33/DBMS/assets/123052484/caa7fee4-598a-4762-97ac-a74a20dd1faf)
 
-### 2) Create a table student  and insert any two rows with the following fieds RegisterNumber,Name,Age,Address,Phone number
+
+### *2) Create a table student  and insert any two rows with the following fieds RegisterNumber,Name,Age,Address,Phone number
 
 ### SQL QUERY: 
+create table student(Regno int, Name varchar(20),Age int,Address varchar(50),Phonenumber varchar(10));
 
 
 ### OUTPUT:
+![image](https://github.com/PGHARIHARAN33/DBMS/assets/123052484/18aadf96-e6b5-4ba7-85d3-b4815bf33e84)
 
-### 3) Alter the above student table by adding another attribute department
+
+### *3) Alter the above student table by adding another attribute department
 
 ### SQL QUERY: 
+alter table student add dept varchar(20);
 
 ### OUTPUT:
+![image](https://github.com/PGHARIHARAN33/DBMS/assets/123052484/6f58dec4-cb3d-4c1a-9bbc-e870ff65d926)
 
-### 4) Rename the student table to mystudent
+
+### *4) Rename the student table to mystudent
 
 ### SQL QUERY: 
-
-
+rename table student to mystudent;
 
 ### OUTPUT:
+![image](https://github.com/PGHARIHARAN33/DBMS/assets/123052484/1e2c8b4d-13a9-48d1-9e66-952c634240f3)
 
-### 5) Delete the mystudent rows using truncate keyword
+
+### *5) Delete the mystudent rows using truncate keyword
 
 ### SQL QUERY: 
-
+truncate table mystudent;
 
 ### OUTPUT:
-### 4) Drop the mystudent table
+![image](https://github.com/PGHARIHARAN33/DBMS/assets/123052484/c0c90d77-4671-4adf-9e92-5db773579c5b)
+
+### *6) Drop the mystudent table
  
 ### SQL QUERY: 
-
+drop table mystudent;
 
 ### OUTPUT:
+![image](https://github.com/PGHARIHARAN33/DBMS/assets/123052484/086fb011-ec7c-4609-af9f-d116ea468728)
+
 
 
 
