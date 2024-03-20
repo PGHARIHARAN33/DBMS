@@ -10,9 +10,55 @@
 5. End the begin section.
 
 ### Program:
+### Create employee table
+```
+CREATE TABLE employd (
+  empid NUMBER,
+  empname VARCHAR(10),
+  dept VARCHAR(10),
+  salary NUMBER
+);
+```
+```
+
+INSERT INTO employd VALUES (1, 'Gojo', 'HR', 100000);
+INSERT INTO employd VALUES (2, 'Yuji', 'Sales', 80000);
+select * from employd;
+```
+
+
+### PLSQL Cursor code
+```
+DECLARE
+   CURSOR employd_cursor IS
+   SELECT empid,empname,dept,salary
+   FROM employd;
+   emp_id NUMBER;
+   emp_name VARCHAR(50);
+   emp_dept VARCHAR(50);
+   emp_salary NUMBER;
+BEGIN
+  OPEN employd_cursor;
+
+  LOOP
+    FETCH employd_cursor INTO emp_id, emp_name, emp_dept, emp_salary;
+
+    EXIT WHEN employd_cursor%NOTFOUND;
+
+    DBMS_OUTPUT.PUT_LINE('Employee ID: ' || emp_id);
+    DBMS_OUTPUT.PUT_LINE('Employee Name: ' || emp_name);
+    DBMS_OUTPUT.PUT_LINE('Department: ' || emp_dept);
+    DBMS_OUTPUT.PUT_LINE('Salary: ' || emp_salary);
+  END LOOP;
+
+  CLOSE employd_cursor;
+END;
+/
+```
 
 
 ### Output:
+![image](https://github.com/PGHARIHARAN33/DBMS/assets/123052484/1b7ece27-a111-4da6-8eb6-2e489f5a6c64)
 
 
 ### Result:
